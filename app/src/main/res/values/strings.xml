@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">AnimeDXD</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="error_username_required">Username must be filled</string>
+    <string name="error_username_length">Username must be 5 until 10 characters</string>
+    <string name="error_password_required">Password must be filled</string>
+    <string name="login_success">Login success</string>
+    <string name="login_failed">Wrong username or password</string>
+
+    <!-- Judul -->
+    <string name="title_1">Welcome to AnimeDXD – Your Ultimate Anime Universe in One App!</string>
+    <string name="title_2">Secure &amp; Seamless Login</string>
+    <string name="title_3">Live Anime News &amp; Updates</string>
+    <string name="title_4">Discover Exciting Manga</string>
+    <string name="title_5">Explore the Anime Library</string>
+    <string name="title_6">Share Your Thoughts</string>
+    <string name="title_7">Smooth &amp; Stylish Navigation</string>
+
+    <!-- Deskripsi -->
+    <string name="desc_1">Dive into the world of anime like never before with AnimeDXD, the all-in-one mobile app built exclusively for anime lovers across the globe. Whether you are into the latest anime news, trending manga, or just exploring your next favorite series, AnimeDXD is your perfect companion.</string>
+    <string name="desc_2">Log in effortlessly with smart validation features and enjoy a personalized greeting every time.</string>
+    <string name="desc_3">Stay ahead of the curve with a sleek image carousel showcasing the hottest anime headlines.</string>
+    <string name="desc_4">Browse through a rich collection of manga, complete with stunning covers and intriguing summaries.</string>
+    <string name="desc_5">Access a curated list of anime, each with its own genre, synopsis, and detail view. Found something you love? Tap to learn more!</string>
+    <string name="desc_6">Leave reviews and express your opinions directly from the anime detail page—because your voice matters.</string>
+    <string name="desc_7">Navigate between Home, List, and About with a clean, intuitive interface designed for maximum engagement.</string>
+
+</resources>

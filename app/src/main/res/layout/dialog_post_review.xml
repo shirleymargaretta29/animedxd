@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@android:color/white"
+    android:layout_marginStart="24dp"
+    android:layout_marginEnd="24dp"
+    android:clipToPadding="false">
+
+    <!-- Input Review -->
+    <EditText
+        android:id="@+id/etReview"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="Input your review"
+        android:textColorHint="#888"
+        android:gravity="center"
+        android:padding="10dp"
+        android:backgroundTint="@color/black"
+        android:scrollbars="vertical"
+        android:background="@drawable/bg_edittext_border"/>
+
+    <!-- Pesan Error -->
+    <TextView
+        android:id="@+id/tvErrorMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#B00020"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        android:drawableLeft="@drawable/ic_error"
+        android:drawablePadding="5dp"
+        android:drawableTint="#B00020"
+        android:text="Review field must be filled!" />
+
+    <!-- Tombol Post -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSubmitReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post Review"
+        android:textColor="@color/white"
+        android:layout_marginTop="12dp"
+        android:padding="12dp"
+        android:background="@drawable/bg_button_selector"
+        android:textAllCaps="false"/>
+
+</LinearLayout>

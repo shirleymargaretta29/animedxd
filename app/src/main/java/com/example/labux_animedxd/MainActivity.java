@@ -40,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
                     errorMessage.setText(getString(R.string.error_password_required));
                     errorMessage.setVisibility(View.VISIBLE);
                 } else {
-                    Intent intent = new Intent(MainActivity.this, AboutUsActivity.class);
+                    // Jika semua validasi lolos
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    intent.putExtra("USERNAME", user); // Langsung pakai variabel 'user'
                     startActivity(intent);
                     finish();
                 }

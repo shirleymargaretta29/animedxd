@@ -1,8 +1,15 @@
 package com.example.labux_animedxd;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -43,6 +50,30 @@ public class AboutUsActivity extends BaseActivity {
             public void onPageSelected(int position) {
                 selectDot(position);
             }
+        });
+
+        ImageButton btnMenu = findViewById(R.id.btnMenu);
+        btnMenu.setOnClickListener(v -> {
+            View popupView = getLayoutInflater().inflate(R.layout.popup_menu_custom, null);
+
+            PopupWindow popupWindow = new PopupWindow(popupView,
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    true);
+
+            popupWindow.setOutsideTouchable(true);
+            popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+            // Event klik logout
+            TextView tvLogout = popupView.findViewById(R.id.tvLogout);
+            tvLogout.setOnClickListener(view -> {
+                Intent intent = new Intent(AboutUsActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                popupWindow.dismiss();
+            });
+
+            popupWindow.showAsDropDown(v, 0, 0);
         });
     }
 

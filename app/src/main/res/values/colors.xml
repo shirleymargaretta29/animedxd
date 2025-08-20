@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="darkBackground">#0B0D21</color>
+    <color name="darkBackground">#000A20</color>
     <color name="primaryBlue">#2A4DC1</color>
     <color name="errorRed">#FF0000</color>
 </resources>

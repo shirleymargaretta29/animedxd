@@ -1,6 +1,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="#101820" /> <!-- Warna background -->
+    <solid android:color="#000A20" /> <!-- Warna background -->
     <stroke
         android:width="2dp"
         android:color="#FFFFFF" />     <!-- Warna border -->

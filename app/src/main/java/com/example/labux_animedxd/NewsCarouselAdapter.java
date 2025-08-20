@@ -69,19 +69,19 @@ public class NewsCarouselAdapter extends RecyclerView.Adapter<NewsCarouselAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            // Cari View khusus untuk background
-            View cardBackground = itemView.findViewById(R.id.card_background);
-
-            // Buat dan terapkan background melengkung HANYA ke View tersebut
+            // --- KODE UNTUK SUDUT MELENGKUNG DAN OUTLINE ---
             android.graphics.drawable.GradientDrawable drawable = new android.graphics.drawable.GradientDrawable();
             drawable.setShape(android.graphics.drawable.GradientDrawable.RECTANGLE);
-            drawable.setCornerRadius(40f);
-            cardBackground.setBackground(drawable);
+            drawable.setCornerRadius(40f); // Tingkat kelengkungan
 
-            // Penting: potong view utama agar mengikuti bentuk background
-            ((ViewGroup) itemView).setClipToOutline(true);
+            // Tambahkan outline (stroke)
+            drawable.setStroke(2, android.graphics.Color.parseColor("#FFFFFF")); // Ketebalan 2px, warna putih
 
-            // Sisanya tetap sama
+            itemView.setBackground(drawable);
+            itemView.setClipToOutline(true); // Memotong gambar agar ikut melengkung
+            // --- BATAS KODE ---
+
+            // Cari komponen di dalam kartu
             newsImage = itemView.findViewById(R.id.news_image);
             newsLabel = itemView.findViewById(R.id.news_label);
             newsTitle = itemView.findViewById(R.id.news_title);

@@ -10,7 +10,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AboutUsActivity extends AppCompatActivity {
+public class AboutUsActivity extends BaseActivity {
 
     private ViewPager2 viewPager;
     private LinearLayout dotsLayout;
@@ -20,6 +20,7 @@ public class AboutUsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
+        setupNavbar();
 
         viewPager = findViewById(R.id.viewPager);
         dotsLayout = findViewById(R.id.dotsLayout);

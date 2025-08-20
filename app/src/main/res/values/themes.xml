@@ -7,5 +7,12 @@
 
     <style name="Theme.Labux_animedxd" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:fontFamily">@font/outfit_regular</item>
+        <item name="colorPrimary">@color/primaryBlue</item>
+        <item name="colorPrimaryVariant">@color/primaryBlue</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+    <style name="CustomTabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">16sp</item>
+        <item name="textAllCaps">false</item>
     </style>
 </resources>

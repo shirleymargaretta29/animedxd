@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navbar"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:weightSum="3"
+    android:background="@color/darkBackground">
+
+    <ImageButton
+        android:id="@+id/navList"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_list"
+        android:contentDescription="List"
+        android:scaleType="centerInside"
+        android:padding="8dp"
+        android:tint="@color/white" />
+
+    <ImageButton
+        android:id="@+id/navHome"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_home"
+        android:contentDescription="Home"
+        android:scaleType="centerInside"
+        android:padding="8dp"
+        android:tint="@color/white" />
+
+    <ImageButton
+        android:id="@+id/navAbout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_info"
+        android:contentDescription="About"
+        android:scaleType="centerInside"
+        android:padding="8dp"
+        android:tint="@color/white" />
+
+</LinearLayout>

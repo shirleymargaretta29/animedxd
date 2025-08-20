@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,5 +84,20 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // 5. Bottom Navigation
+        ImageButton navList = findViewById(R.id.navList);
+        ImageButton navAbout = findViewById(R.id.navAbout);
+
+        navList.setOnClickListener(v -> {
+            Intent intent2 = new Intent(HomeActivity.this, ListActivity.class);
+            startActivity(intent2);
+        });
+
+        navAbout.setOnClickListener(v -> {
+            Intent intent3 = new Intent(HomeActivity.this, AboutUsActivity.class);
+            startActivity(intent3);
+        });
+
     }
 }

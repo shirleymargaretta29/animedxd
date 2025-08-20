@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.labux_animedxd.HomeActivity;
+
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -22,7 +24,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (navHome != null) {
             navHome.setOnClickListener(v -> {
                 if (!(this instanceof HomeActivity)) {
-                    startActivity(new Intent(this, HomeActivity.class));
+                        startActivity(new Intent(this, HomeActivity.class));
                 }
             });
         }

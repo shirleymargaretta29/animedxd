@@ -8,6 +8,7 @@
     android:background="#000A20"
     tools:context=".HomeActivity">
 
+    <!-- Bagian atas -->
     <LinearLayout
         android:id="@+id/top_container"
         android:layout_width="match_parent"
@@ -54,18 +55,20 @@
 
     </LinearLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_navigation_menu" />
-
+    <!-- ViewPager di atas navbar -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_below="@id/top_container"
-        android:layout_above="@id/bottomNavigationView" />
+        android:layout_above="@id/navbar_include" />
+
+    <!-- Include custom navbar -->
+    <include
+        android:id="@+id/navbar_include"
+        layout="@layout/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

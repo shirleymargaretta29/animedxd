@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
+import androidx.viewpager2.widget.ViewPager2;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +24,7 @@ public class NewsFragment extends Fragment {
     private Handler autoScrollHandler;
     private Runnable autoScrollRunnable;
     private RecyclerView newsRecyclerView;
+
     private View activeIndicator;
 
     @Nullable
@@ -33,14 +37,17 @@ public class NewsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Inisialisasi Views
         activeIndicator = view.findViewById(R.id.indicator_active);
         newsRecyclerView = view.findViewById(R.id.news_carousel_recycler_view);
 
+        // Setup Data
         List<NewsArticle> articleList = new ArrayList<>();
         articleList.add(new NewsArticle(R.drawable.news_solo_leveling, "NEWS", "Solo Leveling Officially Premieres"));
         articleList.add(new NewsArticle(R.drawable.news_anime_expo, "EVENT", "Anime Expo 2025 Announced"));
         articleList.add(new NewsArticle(R.drawable.news_one_piece, "UPDATE", "One Piece Hits Episode 1100"));
 
+        // Setup RecyclerView
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         newsRecyclerView.setLayoutManager(layoutManager);
         NewsCarouselAdapter adapter = new NewsCarouselAdapter(articleList);
@@ -48,7 +55,29 @@ public class NewsFragment extends Fragment {
         SnapHelper snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(newsRecyclerView);
 
-        // Listener untuk menggerakkan indikator
+        // KODE UNTUK MEMPERBAIKI SCROLL MANUAL
+        ViewPager2 mainViewPager = requireActivity().findViewById(R.id.viewPager);
+        newsRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                switch (e.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        mainViewPager.setUserInputEnabled(false);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        mainViewPager.setUserInputEnabled(true);
+                        break;
+                }
+                return false;
+            }
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {}
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {}
+        });
+
+        // KODE UNTUK MENGGERAKKAN INDIKATOR
         newsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
@@ -65,6 +94,7 @@ public class NewsFragment extends Fragment {
             }
         });
 
+        // Setup auto-scroll (tetap sama)
         setupAutoScroll(layoutManager, adapter);
     }
 
@@ -78,7 +108,7 @@ public class NewsFragment extends Fragment {
                     newsRecyclerView.smoothScrollToPosition(nextPosition);
                 }
             }
-            autoScrollHandler.postDelayed(autoScrollRunnable, 3000);
+            autoScrollHandler.postDelayed(autoScrollRunnable, 5000); // Waktu 5 detik
         };
     }
 
@@ -86,7 +116,7 @@ public class NewsFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (autoScrollHandler != null && autoScrollRunnable != null) {
-            autoScrollHandler.postDelayed(autoScrollRunnable, 3000);
+            autoScrollHandler.postDelayed(autoScrollRunnable, 5000);
         }
     }
 

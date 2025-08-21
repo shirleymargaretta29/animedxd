@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AnimeDXD</string>
-    <string name="hint_username">Username</string>
-    <string name="hint_password">Password</string>
+    <string name="hint_username">Enter username</string>
+    <string name="hint_password">Enter Password</string>
     <string name="btn_login">LOGIN</string>
     <string name="error_username_required">Username must be filled</string>
     <string name="error_username_length">Username must be 5 until 10 characters</string>

@@ -69,13 +69,10 @@ public class NewsCarouselAdapter extends RecyclerView.Adapter<NewsCarouselAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            // --- KODE UNTUK SUDUT MELENGKUNG DAN OUTLINE ---
+            // --- KODE BARU UNTUK SUDUT MELENGKUNG ---
             android.graphics.drawable.GradientDrawable drawable = new android.graphics.drawable.GradientDrawable();
             drawable.setShape(android.graphics.drawable.GradientDrawable.RECTANGLE);
             drawable.setCornerRadius(40f); // Tingkat kelengkungan
-
-            // Tambahkan outline (stroke)
-            drawable.setStroke(2, android.graphics.Color.parseColor("#FFFFFF")); // Ketebalan 2px, warna putih
 
             itemView.setBackground(drawable);
             itemView.setClipToOutline(true); // Memotong gambar agar ikut melengkung

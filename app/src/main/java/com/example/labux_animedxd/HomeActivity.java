@@ -11,6 +11,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import android.content.SharedPreferences;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+
 
 public class HomeActivity extends BaseActivity {
 
@@ -24,12 +33,17 @@ public class HomeActivity extends BaseActivity {
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         ViewPager2 viewPager = findViewById(R.id.viewPager);
 
-        // 2. Terima dan tampilkan username dari Intent
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("USERNAME");
-        if (username != null && !username.isEmpty()) {
-            welcomeMessage.setText("Welcome, " + username);
-        }
+//        // 2. Terima dan tampilkan username dari Intent
+//        Intent intent = getIntent();
+//        String username = intent.getStringExtra("USERNAME");
+//        if (username != null && !username.isEmpty()) {
+//            welcomeMessage.setText("Welcome, " + username);
+//        }
+        SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        String username = prefs.getString("USERNAME", "user");
+
+        welcomeMessage.setText("Welcome, " + username);
+
 
         // 3. Setup Adapter dan hubungkan ke ViewPager
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
@@ -97,6 +111,30 @@ public class HomeActivity extends BaseActivity {
         navAbout.setOnClickListener(v -> {
             Intent intent3 = new Intent(HomeActivity.this, AboutUsActivity.class);
             startActivity(intent3);
+        });
+
+        ImageButton btnMenu = findViewById(R.id.btnMenu);
+        btnMenu.setOnClickListener(v -> {
+            View popupView = getLayoutInflater().inflate(R.layout.popup_menu_custom, null);
+
+            PopupWindow popupWindow = new PopupWindow(popupView,
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    true);
+
+            popupWindow.setOutsideTouchable(true);
+            popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+            // Event klik logout
+            TextView tvLogout = popupView.findViewById(R.id.tvLogout);
+            tvLogout.setOnClickListener(view -> {
+                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                popupWindow.dismiss();
+            });
+
+            popupWindow.showAsDropDown(v, 0, 0);
         });
 
     }

@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/darkBackground"
-    android:padding="16dp"
+    android:paddingTop="16dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
     tools:context=".ListActivity">
 
     <!-- Header -->

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import android.content.SharedPreferences;
 
 public class HomeActivity extends BaseActivity {
 
@@ -24,12 +25,17 @@ public class HomeActivity extends BaseActivity {
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         ViewPager2 viewPager = findViewById(R.id.viewPager);
 
-        // 2. Terima dan tampilkan username dari Intent
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("USERNAME");
-        if (username != null && !username.isEmpty()) {
-            welcomeMessage.setText("Welcome, " + username);
-        }
+//        // 2. Terima dan tampilkan username dari Intent
+//        Intent intent = getIntent();
+//        String username = intent.getStringExtra("USERNAME");
+//        if (username != null && !username.isEmpty()) {
+//            welcomeMessage.setText("Welcome, " + username);
+//        }
+        SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        String username = prefs.getString("USERNAME", "user");
+
+        welcomeMessage.setText("Welcome, " + username);
+
 
         // 3. Setup Adapter dan hubungkan ke ViewPager
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);

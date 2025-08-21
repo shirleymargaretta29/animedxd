@@ -1,8 +1,10 @@
 package com.example.labux_animedxd;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -21,6 +23,13 @@ public class AboutUsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
         setupNavbar();
+
+        TextView welcomeMessage = findViewById(R.id.welcome_text);
+
+        SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        String username = prefs.getString("USERNAME", "user");
+
+        welcomeMessage.setText("Welcome, " + username);
 
         viewPager = findViewById(R.id.viewPager);
         dotsLayout = findViewById(R.id.dotsLayout);

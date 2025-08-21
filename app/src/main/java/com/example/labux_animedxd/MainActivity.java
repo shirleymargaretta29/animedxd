@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
+import android.content.SharedPreferences;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,12 +41,18 @@ public class MainActivity extends AppCompatActivity {
                     errorMessage.setText(getString(R.string.error_password_required));
                     errorMessage.setVisibility(View.VISIBLE);
                 } else {
-                    // Jika semua validasi lolos
+                    // Simpan username ke SharedPreferences
+                    SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("USERNAME", user);
+                    editor.apply();
+
+                    // Pindah ke Home
                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                    intent.putExtra("USERNAME", user); // Langsung pakai variabel 'user'
                     startActivity(intent);
                     finish();
                 }
+
             }
         });
     }
